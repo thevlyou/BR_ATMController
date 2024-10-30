@@ -18,6 +18,7 @@ $ make
 ```shell
 $ g++ -o BearCodingTest *.cpp
 ```
+- Actually not sure about this method. I couldn't test this line.
 
 ---
 
@@ -26,7 +27,7 @@ $ g++ -o BearCodingTest *.cpp
 $ ./BearCodingTest
 ```
 
-This code uses main.cpp for test and testset.hpp for test data.
+This code uses *main.cpp* for test and *testset.hpp* for test data.
 
 ---
 
@@ -37,5 +38,3 @@ This code is a simple ATM controller code.
 First, the initial flow of insertion of card, matching PIN, and selecting account will be done.
 
 Then, the test program will lead to the function selection of checking the balance, deposit, or withdraw.
-
-
