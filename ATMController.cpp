@@ -19,7 +19,7 @@ void ATMController::checkCard() {
     bool cardFound = false;
 
     while(controllerState == CONTROLLER_START) {
-        std::cout << "Insert your card\n";
+        std::cout << "\nInsert your card (If you want to exit, enter -1) :";
         std::cin >> card;
 
         if(card >= 0) {
@@ -33,13 +33,13 @@ void ATMController::checkCard() {
             }
 
             if(!cardFound) {
-                std::cout << "Wrong card\n";
+                std::cout << "\nWrong card\n";
             }
 
             cardFound = false;
         }
         else if(card < 0) {
-            std::cout << "End testing\n";
+            std::cout << "\nEnd testing\n";
             controllerState = CONTROLLER_NO_ACT;
             return;
         }
@@ -50,7 +50,7 @@ void ATMController::checkPIN() {
     int pin;
 
     while(controllerState == CONTROLLER_CARD_CHECKED) {
-        std::cout << "Enter your password\n";
+        std::cout << "\nEnter your password (If you want to go back, enter -1) :";
         std::cin >> pin;
 
         if(pin == testset::testAccount[cardNum].pinNum) {
@@ -63,7 +63,7 @@ void ATMController::checkPIN() {
             return;
         }
         else {
-            std::cout << "Wrong pin\n";
+            std::cout << "\nWrong pin\n";
         }
     }
 }
@@ -73,7 +73,7 @@ void ATMController::selectAccount() {
     bool accountFound = false;
 
     while(controllerState == CONTROLLER_PIN_CHECKED) {
-        std::cout << "Enter your account\n";
+        std::cout << "\nEnter your account (If you want to go back, enter -1) :";
         std::cin >> num;
 
         if(num >= 0) {
@@ -86,7 +86,7 @@ void ATMController::selectAccount() {
             }
 
             if(!accountFound) {
-                std::cout << "Wrong account\n";
+                std::cout << "\nWrong account\n";
             }
 
             accountFound = false;
@@ -105,7 +105,7 @@ void ATMController::accountFunction() {
     while(controllerState == CONTROLLER_FUNCTION_READY) {
         switch(command) {
             case ACCOUNT_NO_ACT:
-                std::cout << "Enter command\n";
+                std::cout << "\nEnter command (If you want to go back, enter -1) :";
                 std::cin >> command;
                 break;
             case ACCOUNT_SEE_BALANCE:
@@ -133,21 +133,21 @@ void ATMController::accountFunction() {
 }
 
 void ATMController::seeBalance() {
-    std::cout << "Balance of " << testset::testAccount[cardNum].account[accountNum].accountNum << " : " << testset::testAccount[cardNum].account[accountNum].balance << std::endl;
+    std::cout << "\nBalance of " << testset::testAccount[cardNum].account[accountNum].accountNum << " : " << testset::testAccount[cardNum].account[accountNum].balance << std::endl;
 }
 
 void ATMController::deposit() {
     int deposit;
-    std::cout << "Enter deposit value : ";
+    std::cout << "\nEnter deposit value : ";
     std::cin >> deposit;
     testset::testAccount[cardNum].account[accountNum].balance += deposit;
-    std::cout << "Balance of " << testset::testAccount[cardNum].account[accountNum].accountNum << " : " << testset::testAccount[cardNum].account[accountNum].balance << std::endl;
+    std::cout << "\nBalance of " << testset::testAccount[cardNum].account[accountNum].accountNum << " : " << testset::testAccount[cardNum].account[accountNum].balance << std::endl;
 }
 
 void ATMController::withdraw() {
     int withdraw;
-    std::cout << "Enter withdraw value : ";
+    std::cout << "\nEnter withdraw value : ";
     std::cin >> withdraw;
     testset::testAccount[cardNum].account[accountNum].balance -= withdraw;
-    std::cout << "Balance of " << testset::testAccount[cardNum].account[accountNum].accountNum << " : " << testset::testAccount[cardNum].account[accountNum].balance << std::endl;
+    std::cout << "\nBalance of " << testset::testAccount[cardNum].account[accountNum].accountNum << " : " << testset::testAccount[cardNum].account[accountNum].balance << std::endl;
 }
